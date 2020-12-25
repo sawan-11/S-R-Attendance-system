@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block body %} 
+  <header class="masthead" style="background-image: url('{{url_for('static',filename='img/dashboard.png')}}');
+  height: 400px;">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading" style="height: 250px;">
+            <h1> Welcome admin </h1>
+            <span class="subheading">Here you can see your employees attendance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </header>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-10 mx-auto">
+<table class="table table-bordered">
+   <thead class="thead-dark">
+    <div class="d-flex justify-content-between mb-2">
+  <li class="list-group-item bg-dark text-white">press here for search <a href="/searchData">
+    <button class="btn btn-warning" style="border: 2px solid; border-radius: 20px;">search</button>
+  </a>
+</li> 
+
+  <li class="list-group-item bg-dark text-white">Clear your database <a href="/ResetData">
+    <button class="btn btn-danger" style="border: 2px solid; border-radius: 20px;">Reset</button>
+  </a>
+</li>
+
+  </div>
+
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">name</th>
+      <th scope="col">InTime</th>
+      <th scope="col">OutTime</th>
+      <th scope="col">InputPerDay</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in data %}
+    <tr>
+      <td>{{row.Id}}</td>
+      <td>{{row.name}}</td>
+       <td>{{row.InTime}}</td>
+       <td>{{row.OutTime}}</td>
+       <td>{{row.InputPerDay}}</td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+    </div>
+    </div>
+  </div>
+
+  {% endblock %}
